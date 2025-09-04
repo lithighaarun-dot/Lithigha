@@ -1,0 +1,26 @@
+// Add simple scroll reveal animation
+document.addEventListener("scroll", function () {
+  const sections = document.querySelectorAll("section");
+  const triggerBottom = window.innerHeight * 0.85;
+
+  sections.forEach(section => {
+    const sectionTop = section.getBoundingClientRect().top;
+
+    if (sectionTop < triggerBottom) {
+      section.classList.add("show");
+    }
+  });
+});
+
+// Add fade-in effect when section is visible
+const style = document.createElement("style");
+style.innerHTML = `
+  section {
+    opacity: 0;
+    transition: opacity 1.2s ease-in-out;
+  }
+  section.show {
+    opacity: 1;
+  }
+`;
+document.head.appendChild(style);
